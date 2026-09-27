@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verifikasi Email — KarierKu</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div id="app-nav"></div>
+  <main style="max-width:480px;">
+    <h1>Verifikasi Email</h1>
+    <div id="alert-box"><p>Memverifikasi...</p></div>
+    <p><a href="login.html">Kembali ke halaman masuk</a></p>
+  </main>
+</div>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script>
+renderNav('');
+(async () => {
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('token');
+  const box = document.getElementById('alert-box');
+
+  if (!token) {
+    box.innerHTML = '<div class="alert error">Token verifikasi tidak ditemukan di link ini.</div>';
+    return;
+  }
+
+  const res = await apiFetch(`/api/auth/verify?token=${encodeURIComponent(token)}`);
+  box.innerHTML = res.ok
+    ? `<div class="alert success">${res.data.message}</div>`
+    : `<div class="alert error">${res.error || 'Verifikasi gagal.'}</div>`;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+/* ===== Token desain: "Buku Catatan Karier" =====
+   Palet: hijau tua (evergreen) untuk pertumbuhan, kertas hangat untuk latar,
+   ocher/emas pudar untuk pencapaian. Tipografi: Fraunces (judul) + Source Sans 3 (isi). */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
+:root {
+  --ink: #1F2A24;
+  --paper: #EDE7D9;
+  --paper-raised: #F5F1E6;
+  --evergreen: #2F5D50;
+  --evergreen-dark: #203F37;
+  --gold: #B98B3E;
+  --line: #C9C2AC;
+  --danger: #A6403A;
+  --radius: 3px;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a { color: var(--evergreen-dark); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; margin: 0 0 0.5em; color: var(--ink); }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.1rem; }
+p { max-width: 68ch; }
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- Sidebar bergaya pembatas buku catatan --- */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--evergreen);
+  color: #F0EDE3;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .brand {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  padding: 0 20px 20px;
+  border-bottom: 1px solid rgba(240,237,227,0.25);
+  margin-bottom: 12px;
+}
+
+.sidebar .brand span { color: var(--gold); }
+
+.sidebar nav { display: flex; flex-direction: column; }
+
+.sidebar nav a {
+  color: #DCE3D8;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-left: 3px solid transparent;
+  font-size: 0.95rem;
+}
+
+.sidebar nav a:hover { background: rgba(255,255,255,0.06); }
+.sidebar nav a.active {
+  border-left-color: var(--gold);
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+  font-weight: 600;
+}
+
+.sidebar .auth-box {
+  margin-top: auto;
+  padding: 16px 20px 0;
+  border-top: 1px solid rgba(240,237,227,0.25);
+  font-size: 0.85rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.sidebar .auth-box a, .sidebar .auth-box button.link {
+  color: var(--gold);
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+main {
+  flex: 1;
+  padding: 40px clamp(20px, 5vw, 64px);
+  max-width: 900px;
+}
+
+/* --- Kartu gaya "kartu katalog", bukan kartu SaaS membulat --- */
+.card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 14px; height: 14px;
+  background: linear-gradient(135deg, transparent 50%, var(--line) 50%);
+}
+
+.card .meta { color: #5B5C4F; font-size: 0.88rem; margin-bottom: 6px; }
+
+.divider {
+  border: none;
+  border-top: 1px dashed var(--line);
+  margin: 28px 0;
+}
+
+label { display: block; font-weight: 600; margin: 14px 0 6px; font-size: 0.92rem; }
+label .hint { font-weight: 400; color: #5B5C4F; font-size: 0.82rem; display: block; }
+
+input[type=text], input[type=email], input[type=password], input[type=url], textarea, select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  font: inherit;
+  color: var(--ink);
+}
+
+textarea { min-height: 110px; resize: vertical; }
+
+button, .btn {
+  font: inherit;
+  border: 1px solid var(--evergreen);
+  background: var(--evergreen);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+}
+button:hover, .btn:hover { background: var(--evergreen-dark); }
+
+.btn.secondary {
+  background: transparent;
+  color: var(--evergreen-dark);
+}
+.btn.secondary:hover { background: rgba(47,93,80,0.08); }
+
+.btn.danger { background: var(--danger); border-color: var(--danger); }
+
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+
+.alert {
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+}
+.alert.info { background: #E4EEE9; border: 1px solid var(--evergreen); }
+.alert.error { background: #F5E3E1; border: 1px solid var(--danger); color: var(--danger); }
+.alert.success { background: #EAF3E4; border: 1px solid #4C7A3D; color: #3A5D2E; }
+
+.tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  background: #E4DFC9;
+  border: 1px solid var(--line);
+  padding: 2px 9px;
+  border-radius: 999px;
+  margin: 0 6px 6px 0;
+}
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+@media (max-width: 760px) {
+  .app-shell { flex-direction: column; }
+  .sidebar { width: 100%; }
+  .sidebar nav { flex-direction: row; flex-wrap: wrap; }
+  .sidebar .auth-box { border-top: none; margin-top: 12px; padding-top: 0; }
+  .grid-2 { grid-template-columns: 1fr; }
+  main { padding: 24px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+.cv-preview {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 32px;
+  font-family: var(--sans);
+  max-width: 720px;
+}
+.cv-preview h1 { font-size: 1.6rem; margin-bottom: 2px; }
+.cv-preview .cv-role { color: var(--evergreen-dark); font-weight: 600; margin-bottom: 14px; }
+.cv-preview h3 { border-bottom: 2px solid var(--gold); padding-bottom: 4px; margin-top: 22px; }
+
+@media print {
+  .sidebar, .no-print { display: none !important; }
+  main { padding: 0; max-width: none; }
+  body { background: #fff; }
+}
