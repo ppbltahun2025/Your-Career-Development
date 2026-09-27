@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peluang Karier — KarierKu</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div id="app-nav"></div>
+  <main>
+    <h1>Peluang Karier</h1>
+    <p>Catat sendiri lowongan yang kamu incar, cari lowongan dari sumber eksternal (perlu backend aktif), atau baca tips memilih arah karier di bagian bawah.</p>
+    <div id="alert-box"></div>
+
+    <h2>Tambah Peluang Secara Manual</h2>
+    <form id="add-form" class="card">
+      <label>Judul posisi</label>
+      <input type="text" id="opp-title" required>
+      <div class="grid-2">
+        <div>
+          <label>Perusahaan/instansi</label>
+          <input type="text" id="opp-company">
+        </div>
+        <div>
+          <label>Status</label>
+          <select id="opp-status">
+            <option value="diincar">Diincar</option>
+            <option value="melamar">Sudah melamar</option>
+            <option value="wawancara">Tahap wawancara</option>
+            <option value="ditawari">Ditawari posisi</option>
+            <option value="ditolak">Tidak lolos</option>
+          </select>
+        </div>
+      </div>
+      <label>Link lowongan (opsional)</label>
+      <input type="url" id="opp-url" placeholder="https://...">
+      <label>Catatan</label>
+      <textarea id="opp-notes"></textarea>
+      <div class="btn-row"><button type="submit">Tambah ke daftar</button></div>
+    </form>
+
+    <hr class="divider">
+    <h2>Cari Lowongan dari Sumber Eksternal</h2>
+    <p style="font-size:0.9rem; color:#5B5C4F;">Membutuhkan backend yang aktif dan login akun (pencarian diproses lewat server agar aman). Contoh bawaan memakai API publik Remotive (lowongan remote).</p>
+    <div class="btn-row">
+      <input type="text" id="search-q" placeholder="mis. digital marketing" style="max-width:280px;">
+      <button type="button" id="search-btn">Cari</button>
+    </div>
+    <div id="search-results"></div>
+
+    <hr class="divider">
+    <h2>Daftar Peluang Kamu</h2>
+    <div id="opportunity-list"></div>
+  </main>
+</div>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/opportunities.js"></script>
+</body>
+</html>

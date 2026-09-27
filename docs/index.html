@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KarierKu — Biografi, Karier, dan Pengembangan Diri</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div id="app-nav"></div>
+  <main>
+    <h1>Selamat datang di KarierKu</h1>
+    <p>Satu tempat untuk menuliskan biografi dan riwayat kariermu, melacak peluang kerja yang kamu incar, membangun CV yang disesuaikan untuk lowongan tertentu, dan belajar hal baru seputar pengembangan diri.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>1. Lengkapi Biografi & Karier</h3>
+        <p>Ceritakan siapa kamu, peran saat ini, keahlian, pengalaman, dan pendidikanmu. Data ini jadi dasar untuk fitur CV cepat.</p>
+        <a class="btn" href="profile.html">Isi profil</a>
+      </div>
+      <div class="card">
+        <h3>2. Lacak Peluang Karier</h3>
+        <p>Catat lowongan incaranmu sendiri, cari lowongan dari sumber eksternal, atau baca tips memilih arah karier.</p>
+        <a class="btn" href="opportunities.html">Lihat peluang</a>
+      </div>
+      <div class="card">
+        <h3>3. Buat CV Cepat</h3>
+        <p>Pilih posisi yang kamu tuju, dan hasilkan CV yang disesuaikan — bisa disalin, diunduh sebagai PDF, atau Word (.docx).</p>
+        <a class="btn" href="cv-builder.html">Buat CV</a>
+      </div>
+      <div class="card">
+        <h3>4. Belajar & Berkembang</h3>
+        <p>Kumpulan tips ringkas seputar CV, wawancara kerja, personal branding, dan pengembangan keterampilan.</p>
+        <a class="btn" href="learn.html">Mulai belajar</a>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <p style="color:#5B5C4F; font-size:0.9rem;">Kamu bisa langsung memakai aplikasi ini tanpa mendaftar (mode tamu, data tersimpan di perangkatmu), atau membuat akun agar datamu tersimpan di server dan bisa diakses dari perangkat lain.</p>
+  </main>
+</div>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script>renderNav('home');</script>
+</body>
+</html>

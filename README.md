@@ -60,10 +60,22 @@ Karena `SMTP_HOST` di `.env.example` masih kosong, saat mendaftar akun baru, lin
 
 ### Opsi A — Hanya mode tamu (murni statis, paling mudah)
 
-Kalau kamu cukup memakai mode tamu (tanpa akun/login), kamu bisa deploy folder `public/` saja ke **GitHub Pages**:
+Kalau kamu cukup memakai mode tamu (tanpa akun/login), kamu bisa deploy lewat **GitHub Pages**. Repo ini sudah menyediakan folder `docs/` (isinya sama dengan `public/`) khusus untuk GitHub Pages, lengkap dengan file `.nojekyll` supaya GitHub tidak mencoba memprosesnya lewat Jekyll (yang bisa gagal build karena tema bawaan Jekyll, bukan karena file aplikasi kita).
+
+**Cara termudah — "Deploy from a branch" (disarankan):**
 1. Di repo GitHub, buka **Settings → Pages**.
-2. Pilih source dari branch `main`, folder `/public` (atau salin isi `public/` ke branch `gh-pages`/folder root sesuai preferensimu).
-3. Aplikasi akan bisa diakses lewat `https://USERNAME.github.io/NAMA-REPO/`.
+2. Di **Build and deployment → Source**, pilih **Deploy from a branch**.
+3. Pilih branch `main`, folder **`/docs`** → **Save**.
+4. Tunggu 1-2 menit, aplikasi bisa diakses lewat `https://USERNAME.github.io/NAMA-REPO/`.
+
+**Kalau opsi di atas tidak tersedia (Source hanya bisa "GitHub Actions"):**
+Repo ini juga sudah menyediakan `.github/workflows/pages.yml` yang meng-upload folder `docs/` langsung sebagai situs statis **tanpa lewat proses build Jekyll** (jadi tidak akan kena error seperti "Build with Jekyll failed"). Cukup pastikan Source di Settings → Pages diset ke **GitHub Actions**, lalu workflow ini otomatis berjalan setiap kamu push ke branch `main`.
+
+> Kalau sebelumnya sempat muncul error run "Build with Jekyll" gagal, itu terjadi karena GitHub secara otomatis memakai workflow Jekyll bawaannya sendiri. Setelah memilih salah satu dari dua cara di atas, error itu tidak akan muncul lagi.
+
+Kalau tampilan yang muncul justru isi README (bukan aplikasinya), berarti GitHub Pages diarahkan ke folder **root**, bukan `/docs` — root repo memang cuma berisi `README.md` dan tidak ada `index.html`, jadi GitHub otomatis merender README sebagai halaman. Perbaiki dengan mengulang langkah di atas dan pastikan folder yang dipilih adalah `/docs`.
+
+> Catatan: folder `docs/` dan `public/` isinya sama persis (satu untuk GitHub Pages, satu dipakai backend saat Opsi B). Kalau kamu mengedit tampilan di `public/`, salin juga perubahannya ke `docs/` supaya kedua versi tetap sinkron.
 
 Fitur biografi, peluang karier (manual), dan pembuat CV tetap berfungsi penuh — hanya fitur akun (login/verifikasi email) dan pencarian lowongan eksternal yang tidak aktif karena keduanya butuh backend.
 
